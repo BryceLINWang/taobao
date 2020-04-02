@@ -1,8 +1,9 @@
-package edu.xalead.taobao.common;
+package edu.xalead.common.util;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import edu.xalead.item.entity.Item;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -86,22 +87,25 @@ public class JsonUtils {
         String name;
         Integer age;
     }
-    public static void main(String[] args) {
-        User u = new User("张三",22);
-        System.out.println(serialize(u));
-        String json = "{\"name\":\"张三\",\"age\":22}";
-        System.out.println(parse(json,User.class));
-        json = "[{\"name\":\"张三\",\"age\":22},{\"name\":\"张三\",\"age\":22},{\"name\":\"张三\",\"age\":22}]";
-        List<User> list = parseList(json, User.class);
-        System.out.println(list);
-        json = "{\"name\":\"李四\",\"age\":22}";
-        Map<String, Object> map = parseMap(json, String.class, Object.class);
-        System.out.println("map:" + map);
-        json = "[{\"name\":\"李四\",\"age\":22},{\"name\":\"李四\",\"age\":22}]";
-        List<Map<String, Object>> maps = nativeRead(json, new TypeReference<List<Map<String, Object>>>() {
-        });
-        for (Map<String, Object> m : maps) {
-            System.out.println(m);
-        }
-    }
+//    public static void main(String[] args) {
+//        Item item=new Item();
+//        item.setId(1111);
+//        item.setName("克莱恩");
+//        item.setPrice(222.2);
+//        System.out.println(serialize(item));
+//        /***
+//         * {"id":1111,"name":"克莱恩","price":222.2}
+//         */
+//        String json="{\"id\":1111,\"name\":\"克莱恩\",\"price\":222.2}";
+//        Item i=parse(json,Item.class);
+//        System.out.println(i);
+//        json="[1,2,3,4,5]";
+//        List<Integer>list=parseList(json,Integer.class);
+//        System.out.println(list);
+//        json="[{\"id\":1111,\"name\":\"克莱恩\",\"price\":123.2},\n" +
+//                "  {\"id\":1111,\"name\":\"kei\",\"price\":123.2},\n" +
+//                "  {\"id\":1111,\"name\":\"notyours\",\"price\":123.2}]";
+//        List<Item>List=nativeRead(json, new TypeReference<List<Item>>() {});
+//        System.out.println(List);
+//    }
 }

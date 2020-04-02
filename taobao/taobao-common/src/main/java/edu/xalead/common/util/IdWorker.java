@@ -1,4 +1,4 @@
-package edu.xalead.taobao.common;
+package edu.xalead.common.util;
 
 import java.lang.management.ManagementFactory;
 import java.net.InetAddress;

@@ -1,5 +1,6 @@
-package edu.xalead.taobao.common;
+package edu.xalead.common.util;
 
+import edu.xalead.item.entity.Item;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -211,5 +212,6 @@ public final class CookieUtils {
 		}
 		return domainName;
 	}
+
 
 }

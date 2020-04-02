@@ -1,16 +1,17 @@
 package edu.xalead.service;
 
 import edu.xalead.dao.ItemDao;
-import edu.xalead.entity.Item;
+import edu.xalead.item.entity.Item;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class ItemService {
  @Resource
     private ItemDao itemDao;
-    public Item saveItem(Item item){
-        return itemDao.saveItem(item);
+    public List<Item>queryAll(){
+        return itemDao.selectAll();
     }
 }
