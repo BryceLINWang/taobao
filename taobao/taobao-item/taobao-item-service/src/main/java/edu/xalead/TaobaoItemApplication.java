@@ -8,7 +8,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringCloudApplication
 @EnableEurekaClient
-@MapperScan("edu,xalead,dao")
+@MapperScan("edu.xalead.dao")
 public class TaobaoItemApplication {
     public static void main(String[] args) {
         SpringApplication.run(TaobaoItemApplication.class);
