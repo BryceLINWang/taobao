@@ -1,4 +1,4 @@
-package edu.xalead.exception;
+package edu.xalead.common.exception;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 public class SystemExceptionHandller {
     @ExceptionHandler({RuntimeException.class})
     public ResponseEntity<ResponseStatus> executeException(TBSystemException e){
-        ResponseStatus status=new ResponseStatus(500,e.getMessage());
-        return ResponseEntity.status(status.getCode()).body(status);
+        return ResponseEntity.status(e.getStatusCode()).body(new ResponseStatus(e.getStatusCode(),e.getMessage()));
     }
 }

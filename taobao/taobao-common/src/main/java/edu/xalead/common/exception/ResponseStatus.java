@@ -1,4 +1,4 @@
-package edu.xalead.exception;
+package edu.xalead.common.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
