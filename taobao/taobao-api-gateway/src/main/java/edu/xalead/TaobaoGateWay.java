@@ -6,8 +6,8 @@ import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 //包含@SpringBootApplication
 //和@EnableDiscoveryClient
-@SpringCloudApplication
 @EnableZuulProxy//启用zuul网关
+@SpringCloudApplication
 public class TaobaoGateWay {
     public static void main(String[] args) {
         SpringApplication.run(TaobaoGateWay.class);

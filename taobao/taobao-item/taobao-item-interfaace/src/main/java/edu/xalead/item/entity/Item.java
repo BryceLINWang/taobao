@@ -1,20 +1,17 @@
 package edu.xalead.item.entity;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+@Table(name = "t_item")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-//
-@Table(name="t_item")
 public class Item {
     @Id
     private Integer id;
     private String name;
-    private double  price;
+    private Double price;
 }
