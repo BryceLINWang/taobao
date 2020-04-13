@@ -42,6 +42,7 @@ public class BrandService {
 
     @Transactional
     public Integer addBrand(Brand brand, String cids) {
+        //TODO 添加品牌
         int count = brandDao.insert(brand);
         if (count <= 0) {
             throw new TBSystemException(SystemExceptionEnum.ADD_FAIL_EXCEPTION);

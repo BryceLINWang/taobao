@@ -39,6 +39,7 @@ public class BrandController {
     }
     @PostMapping("add")
     public void add(Brand brand,String cids){
+
         if(!StringUtils.isNotBlank(cids)){
             throw new TBSystemException(SystemExceptionEnum.NOT_SELECTED_CATEGORY);
         }
