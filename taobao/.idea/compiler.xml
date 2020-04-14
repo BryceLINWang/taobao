@@ -12,6 +12,7 @@
         <module name="taobao-item-interfaace" />
         <module name="taobao-item-service" />
         <module name="taobao-register" />
+        <module name="taobao-upload" />
       </profile>
     </annotationProcessing>
   </component>

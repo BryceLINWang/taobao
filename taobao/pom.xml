@@ -12,6 +12,7 @@
         <module>taobao-api-gateway</module>
         <module>taobao-item</module>
         <module>taobao-common</module>
+        <module>taobao-upload</module>
     </modules>
     <packaging>pom</packaging>
     <parent>
