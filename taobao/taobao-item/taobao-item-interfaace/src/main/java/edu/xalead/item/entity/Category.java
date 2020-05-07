@@ -3,15 +3,13 @@ package edu.xalead.item.entity;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Table(name = "tb_category")
 @Data
 public class Category {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private Integer parentId;
