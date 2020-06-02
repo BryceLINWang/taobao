@@ -41,7 +41,7 @@ public class GoodsService {
                     .andEqualTo("saleable",saleable);
         }
         //排序
-        example.setOrderByClause("last_update_time desc");
+        example.setOrderByClause("last_update_time desc");//按最后更新时间默认排序 升（降）
         //查询
         Page<Spu> ss =
                 (Page<Spu>) spuDao.selectByExample(example);

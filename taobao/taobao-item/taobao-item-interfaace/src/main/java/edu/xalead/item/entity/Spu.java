@@ -21,6 +21,7 @@ public class Spu {
     private Boolean valid;
     private Date createTime;
     private Date lastUpdateTime;
+    //瞬时属性 与数据库无关映射
     @Transient
     private String bname;
     @Transient

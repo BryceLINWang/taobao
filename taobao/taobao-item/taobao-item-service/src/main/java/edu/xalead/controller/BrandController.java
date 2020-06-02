@@ -26,14 +26,8 @@ public class BrandController {
             @RequestParam(value="sortBy") String sortBy,
             @RequestParam(value="desc",defaultValue = "false")Boolean desc){
         Page<Brand> lists = brandService.queryBrandByPage(key,page,rows,sortBy,desc);
-        edu.xalead.vo.Page p = new edu.xalead.vo.Page();
-        p.setData(lists.getResult());
-        p.setTotal(lists.getTotal());
-        p.setTotalPage(lists.getPages());
-        p.setStartRow(lists.getStartRow());
-        p.setEndRow(lists.getEndRow());
-        p.setPageSize(lists.getPageSize());
-        p.setPageNum(lists.getPageNum());
+        edu.xalead.vo.Page p = new edu.xalead.vo.Page(lists);
+
 
         return ResponseEntity.ok(p);
     }
