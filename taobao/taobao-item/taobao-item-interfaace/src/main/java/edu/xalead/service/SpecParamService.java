@@ -13,9 +13,11 @@ public class SpecParamService {
     private SpecParamDao specParamDao;
 
 
-    public List<SpecParam> selectParamsByGid(Long gid) {
+    public List<SpecParam> selectParams(Long gid,Long cid,Boolean searching) {
         SpecParam specParam = new SpecParam();
         specParam.setGroupId(gid);
+        specParam.setCid(cid);
+        specParam.setSearching(searching);
         List<SpecParam> select = specParamDao.select(specParam);
         return select;
     }

@@ -7,10 +7,7 @@ import edu.xalead.item.entity.SpecParam;
 import edu.xalead.service.SpecGroupService;
 import edu.xalead.service.SpecParamService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -31,8 +28,12 @@ public class SpecController {
         return ResponseEntity.ok(groups);
     }
     @GetMapping("params")
-    public ResponseEntity<List<SpecParam>> params(Long gid){
-        List<SpecParam> params = specParamService.selectParamsByGid(gid);
+    public ResponseEntity<List<SpecParam>> params(
+            @RequestParam(value = "gid",required = false) Long gid,
+            @RequestParam(value = "gid",required = false) Long cid,
+            @RequestParam(value = "gid",required = false) Boolean searching){
+        List<SpecParam> params = null;
+        params = specParamService.selectParams(gid,cid,searching);
         if(params == null || params.size() == 0){
             throw new TBSystemException(SystemExceptionEnum.SPEC_PARAM_NOT_FOUND);
         }

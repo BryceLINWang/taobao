@@ -59,4 +59,10 @@ public class BrandService {
         }
         return count;
     }
+
+
+    public List<Brand> queryBrandByCid(Long cid) {
+        return brandDao.queryBrandsByCids(cid);
+
+    }
 }

@@ -31,6 +31,11 @@ public class BrandController {
 
         return ResponseEntity.ok(p);
     }
+    @RequestMapping("cid/{cid}")
+    public ResponseEntity<List<Brand>>queryBrandByCid(@PathVariable("cid") Long cid){
+        List<Brand> brands= brandService.queryBrandByCid(cid);
+        return ResponseEntity.ok(brands);
+    }
     @PostMapping("add")
     public void add(Brand brand,String cids){
 
