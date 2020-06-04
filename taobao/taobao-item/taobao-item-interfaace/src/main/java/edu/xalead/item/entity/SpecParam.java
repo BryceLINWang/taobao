@@ -16,6 +16,7 @@ public class SpecParam {
     @Column(name="`numeric`")
     private Boolean numeric;
     private String unit;
+    private Boolean generic;
     private Boolean searching;
     private String segments;
 }
