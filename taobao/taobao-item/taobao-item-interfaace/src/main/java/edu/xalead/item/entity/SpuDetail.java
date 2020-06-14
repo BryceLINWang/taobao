@@ -9,7 +9,7 @@ import javax.persistence.Table;
 @Table(name="tb_spu_detail")
 public class SpuDetail {
     @Id
-    private Long spuid;
+    private Long spuId;
     private String description;
     private String genericSpec;
     private String specialSpec;

@@ -2,20 +2,17 @@ package edu.xalead.service;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
-import edu.xalead.dao.BrandDao;
-import edu.xalead.dao.CategoryDao;
-import edu.xalead.dao.SpuDao;
-import edu.xalead.dao.SpuDetailDao;
-import edu.xalead.item.entity.Brand;
-import edu.xalead.item.entity.Category;
-import edu.xalead.item.entity.Spu;
-import edu.xalead.item.entity.SpuDetail;
+import edu.xalead.common.exception.SystemExceptionEnum;
+import edu.xalead.common.exception.TBSystemException;
+import edu.xalead.dao.*;
+import edu.xalead.item.entity.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import tk.mybatis.mapper.entity.Example;
 
 import javax.annotation.Resource;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -29,7 +26,10 @@ public class GoodsService {
     private CategoryDao categoryDao;
     @Resource
     private BrandDao brandDao;
-
+    @Resource
+    private SkuDao skuDao;
+    @Resource
+    private StockDao stockDao;
     public Page<Spu> querySpuByPage(String key, String saleable, Integer page, Integer rows) {
         //分布
         PageHelper.startPage(page,rows);
@@ -59,5 +59,32 @@ public class GoodsService {
             spu.setBname(brand.getName());
         }
         return ss;
+    }
+
+    public Integer addSpu(Spu spu) {
+        return spuDao.insert(spu);
+    }
+
+    public Integer addSpuDetail(SpuDetail spuDetail) {
+
+        return spuDetailDao.insert(spuDetail);
+    }
+    @Transactional
+    public void addSkus(List<Sku> skus) {
+        Integer count =  skuDao.insertList(skus);
+        if(count == 0){
+            throw new TBSystemException(SystemExceptionEnum.GOODS_UPDATE_ERROR);
+        }
+        List<Stock> stocks = new ArrayList<>();
+        for(Sku sku : skus){
+            Stock stock = new Stock();
+            stock.setSkuId(sku.getId());
+            stock.setStock(sku.getStock());
+            stocks.add(stock);
+        }
+        count = stockDao.insertList(stocks);
+        if(count == 0){
+            throw new TBSystemException(SystemExceptionEnum.GOODS_UPDATE_ERROR);
+        }
     }
 }
